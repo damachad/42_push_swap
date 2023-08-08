@@ -6,40 +6,18 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/08 14:27:09 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:32:30 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	error_msg(char *msg)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);
-}
-
-int	*check_data(int size, char **nbrs)
-{
-	int		*list;
-	int		i;
-	int		j;
-	
-	i = -1;
-	list = malloc(size + sizeof(int));
-	if (!list)
-		return (NULL);
-	while (++i < size)
-	{
-		j = -1;
-		while (nbrs[i][++j])
-		{
-			if (!ft_isdigit(nbrs[i][j]))
-				return (NULL);
-		}	
-		list[i] = ft_atoi(nbrs[i]);
-	}
-	return (list);
 }
 
 int	main(int argc, char **argv)
@@ -52,10 +30,9 @@ int	main(int argc, char **argv)
 		return (0);
 	list = check_data(argc - 1, ++argv);
 	if (!list)
-	{
-		error_msg("Arguments not valid\n");
-		return (1);
-	}
+		error_msg("Arguments not valid");
+	if (exist_duplicates(argc - 1, list))
+		error_msg("No duplicates allowed");
 	ft_printf("List:\n[");
 	while (++i < (argc - 1))
 		ft_printf("%d, ", list[i]);
