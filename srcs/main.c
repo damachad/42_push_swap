@@ -6,56 +6,58 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/08 12:58:50 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:27:09 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*check_data(char *str)
+void	error_msg(char *msg)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	exit(EXIT_FAILURE);
+}
+
+int	*check_data(int size, char **nbrs)
 {
 	int		*list;
-	char 	**numbers;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	
 	i = -1;
-	list = NULL;
-	list = malloc(count_words2(str) * sizeof(int));
-	numbers = ft_split(str, ' ');
-	if (!numbers)
+	list = malloc(size + sizeof(int));
+	if (!list)
 		return (NULL);
-	while (numbers[++i])
+	while (++i < size)
 	{
 		j = -1;
-		while (numbers[i][++j])
+		while (nbrs[i][++j])
 		{
-			if (!ft_isdigit(numbers[i][j]) && (numbers[i][j] != '-' \
-			&& numbers[i][j] != '+'))
+			if (!ft_isdigit(nbrs[i][j]))
 				return (NULL);
-		}
-		list[i] = ft_atoi(numbers[i]);
+		}	
+		list[i] = ft_atoi(nbrs[i]);
 	}
-	free(numbers);
 	return (list);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*top_a;
 	int		*list;
-	size_t	i;
+	int		i;
 
 	i = -1;
-	top_a = NULL;
-	if (argc != 2)
+	if (argc == 1)
+		return (0);
+	list = check_data(argc - 1, ++argv);
+	if (!list)
 	{
-		ft_printf("Usage: ./push_swap <list of numbers>");
+		error_msg("Arguments not valid\n");
 		return (1);
 	}
-	list = check_data(argv[1]);
 	ft_printf("List:\n[");
-	while (++i < 5)
+	while (++i < (argc - 1))
 		ft_printf("%d, ", list[i]);
 	ft_printf("]\n");
 	free(list);
