@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/08 17:03:32 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:56:13 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ bool	exist_duplicates(int size, int *nbrs);
 bool	valid_range(char *str);
 long	long_atoi(char *nptr);
 
+/*------------------------operations------------------------*/
+t_stack	*new_node(int data);
+t_stack	*push(t_stack *top, int data);
+t_stack	*fill_stack(int *nbrs, int size);
+
+/*---------------------------clean---------------------------*/
 void	error_msg(char *msg);
+void	free_stack(t_stack *top);
 
 #endif
