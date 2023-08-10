@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/08/08 12:51:22 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/10 15:08:21 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,12 @@ OBJ_DIR		= objs
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ FILES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 NAME 		= push_swap
 LIBFT		= libft/libft.a
-FILES 		= main
+FILES 		= main validator operations clean
 SRC 		= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ ARGUMENTS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
-NBRS_LIST = "3 5 19 7 13"
+NBRS_LIST = -2 6 -7 23 45 666 789
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ RULES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 all: $(NAME)
@@ -76,7 +76,7 @@ re: fclean all
 # valgrind --leak-check=full -s --show-leak-kinds=all --track-origins=yes
 
 test: $(NAME)
-	@./$(NAME) $(NBRS_LIST)
+	@valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(NBRS_LIST)
 	
 debug: re
 	@gdb --args $(NAME) $(NBRS_LIST)
