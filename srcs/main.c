@@ -6,36 +6,37 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/09 11:55:13 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:00:08 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	print_stack(t_stack *stack)
+{
+	ft_printf("Stack A:\n");
+	while (stack)
+	{
+		ft_printf("%d\n", stack->data);
+		stack = stack->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack	*top_a;
-	int		*list;
-	int		i;
+	t_stack	*stack_a;
 
-	i = -1;
-	top_a = NULL;
+	stack_a = NULL;
 	if (argc == 1)
 		return (0);
-	list = check_data(argc - 1, ++argv);
-	if (!list)
-		error_msg("Arguments not valid");
-	if (exist_duplicates(argc - 1, list))
-		error_msg("No duplicates allowed");
-	top_a = fill_stack(list, argc - 1);
-	ft_printf("List:\n[");
-	while (top_a)
-	{
-		ft_printf("%d, ", top_a->data);
-		top_a = top_a->next;
-	}
-	ft_printf("]\n");
-	free(list);
-	free_stack(top_a);
+	stack_a = check_data(argc - 1, ++argv);
+	if (!stack_a)
+		error(stack_a);
+	print_stack(stack_a);
+	if (is_sorted(stack_a))
+		ft_printf("Stack is sorted\n");
+	else
+		ft_printf("Stack is not sorted\n");
+	free_stack(stack_a);
 	return (0);
 }

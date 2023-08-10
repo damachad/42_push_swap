@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:31:04 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/08 17:08:34 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:36:05 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,41 +64,40 @@ bool	valid_format(char *str)
 	return (true);
 }
 
-bool	exist_duplicates(int size, int *nbrs)
+bool	exist_duplicates(t_stack *nbrs)
 {
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < size - 1)
+	t_stack	*temp1;
+	t_stack *temp2;
+	
+	temp1 = nbrs;
+	while (temp1->next)
 	{
-		j = i + 1;
-		while (j < size)
+		temp2 = temp1->next;
+		while (temp2)
 		{
-			if (nbrs[i] == nbrs[j++])
+			if (temp1->data == temp2->data)
 				return (true);
+			temp2 = temp2->next;
 		}
+		temp1 = temp1->next;
 	}
 	return (false);
 }
 
-int	*check_data(int size, char **nbrs)
+t_stack	*check_data(int size, char **nbrs)
 {
-	int		*list;
-	int		i;
+	t_stack		*list;
+	int	i;
 
-	i = -1;
-	list = malloc(size + sizeof(int));
-	if (!list)
-		return (NULL);
-	while (++i < size)
+	i = size - 1;
+	list = NULL;
+	while (i >= 0)
 	{
 		if (!valid_format(nbrs[i]) || !valid_range(nbrs[i]))
-		{
-			free(list);
-			return (NULL);
-		}
-		list[i] = ft_atoi(nbrs[i]);
+			error(list);
+		push(&list, ft_atoi(nbrs[i--]));
 	}
+	if (exist_duplicates(list))
+		error(list);
 	return (list);
 }
