@@ -6,40 +6,52 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:23:33 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 15:00:33 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:54:09 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*new_node(int data)
+void	swap(t_stack **top)
 {
-	t_stack	*new_node;
-	
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		return (NULL);
-	new_node->data = data;
-	new_node->next = NULL;
-	return (new_node);
+	t_stack	*temp;
+
+	temp = (*top)->next;
+	(*top)->next = (*top)->next->next;
+	temp->next = (*top);
+	(*top) = temp;
 }
 
-void	push(t_stack **top, int data)
+void	rotate(t_stack **top)
 {
-	t_stack	*new_top;
+	t_stack	*temp;
+	t_stack	*last;
 
-	new_top = new_node(data);
-	new_top->next = *top;
-	*top = new_top;
+	temp = *top;
+	(*top) = (*top)->next;
+	temp->next = NULL;
+	last = last_node(*top);
+	last->next = temp;
 }
 
-bool	is_sorted(t_stack *stack)
+void	rev_rotate(t_stack **top)
 {
-	while(stack->next)
-	{
-		if (stack->data > stack->next->data)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
+	t_stack *last;
+	t_stack	*second_last;
+
+	last = last_node(*top);
+	second_last = second_last_node(*top);
+	second_last->next = NULL;
+	last->next = *top;
+	*top = last;
+}
+
+void	push_to_b(t_stack **top_a, t_stack **top_b)
+{
+	t_stack	*temp;
+
+	push_new_data(top_b, (*top_a)->data);
+	temp = (*top_a);
+	*top_a = (*top_a)->next;
+	free(temp);
 }

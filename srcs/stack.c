@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 11:35:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 15:38:08 by damachad         ###   ########.fr       */
+/*   Created: 2023/08/10 15:52:55 by damachad          #+#    #+#             */
+/*   Updated: 2023/08/10 16:36:16 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	error(t_stack *stack)
+bool	is_sorted(t_stack *stack)
 {
-	free_stack(stack);
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
+	while (stack->next)
+	{
+		if (stack->data > stack->next->data)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
 
-void	free_stack(t_stack *stack)
+t_stack	*last_node(t_stack *top)
 {
-	t_stack	*temp;
+	while (top && top->next)
+		top = top->next;
+	return (top);
+}
 
-	if (!stack)
-		return ;
-	while (stack != NULL)
-	{
-		temp = stack;
-		stack = stack->next;
-		free(temp);
-	}
+t_stack *second_last_node(t_stack *top)
+{
+	while (top && top->next && top->next->next)
+		top = top->next;
+	return (top);
 }

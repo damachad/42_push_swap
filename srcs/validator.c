@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:31:04 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 14:36:05 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:37:56 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ bool	valid_format(char *str)
 bool	exist_duplicates(t_stack *nbrs)
 {
 	t_stack	*temp1;
-	t_stack *temp2;
-	
+	t_stack	*temp2;
+
 	temp1 = nbrs;
 	while (temp1->next)
 	{
@@ -87,7 +87,7 @@ bool	exist_duplicates(t_stack *nbrs)
 t_stack	*check_data(int size, char **nbrs)
 {
 	t_stack		*list;
-	int	i;
+	int			i;
 
 	i = size - 1;
 	list = NULL;
@@ -95,7 +95,7 @@ t_stack	*check_data(int size, char **nbrs)
 	{
 		if (!valid_format(nbrs[i]) || !valid_range(nbrs[i]))
 			error(list);
-		push(&list, ft_atoi(nbrs[i--]));
+		push_new_data(&list, ft_atoi(nbrs[i--]));
 	}
 	if (exist_duplicates(list))
 		error(list);
