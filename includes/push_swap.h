@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 12:22:36 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:56:29 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ typedef struct s_stack
 }						t_stack;
 
 /*------------------------validator------------------------*/
-int		*check_data(int size, char **nbrs);
-bool	valid_format(char *str);
-bool	exist_duplicates(int size, int *nbrs);
-bool	valid_range(char *str);
-long	long_atoi(char *nptr);
+t_stack		*check_data(int size, char **nbrs);
+bool		valid_format(char *str);
+bool		exist_duplicates(t_stack *nbrs);
+bool		valid_range(char *str);
+long		long_atoi(char *nptr);
 
 /*------------------------operations------------------------*/
-t_stack	*new_node(int data, t_stack *top);
-t_stack	*push(t_stack **top, int data);
-t_stack	*fill_stack(int *nbrs, int size);
+t_stack		*new_node(int data);
+void		push(t_stack **top, int data);
+bool		is_sorted(t_stack *stack);
 
 /*---------------------------clean---------------------------*/
-void	error(t_stack *stack);
-void	free_stack(t_stack *top);
+void		error(t_stack *stack);
+void		free_stack(t_stack *top);
 
 #endif
