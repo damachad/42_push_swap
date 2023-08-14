@@ -7,6 +7,7 @@
 5. Create a function for each operation possible
 6. Create list B
 7. (Create testing function to print lists)
-8. Measure cost of sorting each number
-9. Create different sorting functions, depending on the number of elements to sort
+8. Create function to return size of list
+9. Measure cost of sorting each number
+10. Create different sorting functions, depending on the number of elements to sort
 
