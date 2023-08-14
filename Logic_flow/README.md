@@ -11,4 +11,5 @@
 9. Measure cost of sorting each number
 10. Create different sorting functions, depending on the number of elements to sort
 11. Safety checks before doing operations to the lists
+12. Cover both input cases (single or multiple arguments)
 
