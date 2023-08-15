@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 17:05:01 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:14:47 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	size_t	size;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -35,14 +36,19 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		error(stack_a);
 	print_stack(stack_a, 'A');
+	size = stack_size(stack_a);
+	ft_printf("Stack A size: %d\n", size);
 	if (is_sorted(stack_a))
 		ft_printf("Stack is sorted\n");
 	else
+	{
 		ft_printf("Stack is not sorted\n");
-	push_to_b(&stack_a, &stack_b);
+		push_swap(&stack_a, &stack_b, size);
+	}
 	print_stack(stack_a, 'A');
 	print_stack(stack_b, 'B');
 	free_stack(stack_a);
-	free_stack(stack_b);
+	if (stack_b)
+		free_stack(stack_b);
 	return (0);
 }

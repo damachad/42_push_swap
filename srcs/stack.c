@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:52:55 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 16:36:16 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:54:52 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,24 @@ t_stack	*last_node(t_stack *top)
 	return (top);
 }
 
-t_stack *second_last_node(t_stack *top)
+t_stack	*second_last_node(t_stack *top)
 {
 	while (top && top->next && top->next->next)
 		top = top->next;
 	return (top);
+}
+
+size_t	stack_size(t_stack *top)
+{
+	size_t	size;
+
+	if (!top)
+		return (0);
+	size = 0;
+	while (top)
+	{	
+		top = top->next;
+		size++;
+	}
+	return (size);
 }
