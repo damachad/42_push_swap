@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:23:33 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 17:20:54 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/15 10:59:40 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	push_to_b(t_stack **top_a, t_stack **top_b)
 {
 	t_stack	*temp;
 
-	push_new_data(top_b, (*top_a)->data);
+	push_new_val(top_b, (*top_a)->val);
 	temp = (*top_a);
 	*top_a = (*top_a)->next;
 	free(temp);
@@ -61,7 +61,7 @@ void	push_to_a(t_stack **top_a, t_stack **top_b)
 {
 	t_stack	*temp;
 
-	push_new_data(top_a, (*top_b)->data);
+	push_new_val(top_a, (*top_b)->val);
 	temp = (*top_b);
 	*top_b = (*top_b)->next;
 	free(temp);

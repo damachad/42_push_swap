@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:52:55 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/14 16:54:52 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/15 11:00:27 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	is_sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
-		if (stack->data > stack->next->data)
+		if (stack->val > stack->next->val)
 			return (false);
 		stack = stack->next;
 	}
