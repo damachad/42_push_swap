@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/14 14:56:00 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/15 11:00:00 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_stack
 {
-	int					data;
+	int					val;
 	struct s_stack		*next;
 }						t_stack;
 
@@ -32,8 +32,8 @@ bool		valid_range(char *str);
 long		long_atoi(char *nptr);
 
 /*---------------------------init---------------------------*/
-t_stack		*new_node(int data);
-void		push_new_data(t_stack **top, int data);
+t_stack		*new_node(int val);
+void		push_new_val(t_stack **top, int val);
 void		push_swap(t_stack **stack_a, t_stack **stack_b, size_t size);
 
 /*------------------------operations------------------------*/
