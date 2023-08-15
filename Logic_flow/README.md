@@ -13,3 +13,4 @@
 11. Safety checks before doing operations to the lists
 12. Cover both input cases (single or multiple arguments)
 
+[Notion](https://www.notion.so/Push-swap-8008ab19b9884da1936fd38c9dcb4252)
