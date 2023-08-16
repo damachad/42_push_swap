@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:52:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 11:00:21 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 15:42:27 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,78 @@
 
 void	sort_3(t_stack **stack_a)
 {
-	t_stack	*last;
+	t_stack	*highest_node;
 
-	last = (*stack_a)->next->next;
-	if (is_sorted(*stack_a))
-		return ;
-	if ((*stack_a)->val > (*stack_a)->next->val && (*stack_a)->val > last->val)
-		process_a(rotate, stack_a);
-	else if ((*stack_a)->next->val > last->val)
-		process_a(rev_rotate, stack_a);
+	highest_node = highest(*stack_a);
+	if (*stack_a == highest_node)
+		do_op(rotate, stack_a, 'a');
+	else if ((*stack_a)->next == highest_node)
+		do_op(rev_rotate, stack_a, 'a');
 	if ((*stack_a)->val > (*stack_a)->next->val)
-		process_a(swap, stack_a);
+		do_op(swap, stack_a, 'a');
+}
+
+void	big_sort(t_stack **a, t_stack **b, size_t size)
+{
+	t_stack	*first;
+
+	while (size-- > 3)
+		push_to(a, b, 'b');
+	sort_3(a);
+	while (*b)
+	{
+		calculate_costs(*a, *b);
+		move_nodes(a, b);
+	}
+	set_cur_position(*a);
+	first = smallest(*a);
+	if (first->up_median)
+	{
+		while (*a != first)
+			do_op(rotate, a, 'a');
+	}
+	else
+	{
+		while (*a != first)
+			do_op(rev_rotate, a, 'a');
+	}
+}
+
+// Finishes rotating so that cheapest/target is on top of stack
+
+void	finish_rot(t_stack **stack, t_stack *top, char list)
+{
+	while (*stack != top)
+	{
+		if (top->up_median)
+			do_op(rotate, stack, list);
+		else
+			do_op(rev_rotate, stack, list);
+	}
+}
+
+// Rotates or reverse-rotates both stacks until either the
+// cheapest-node is on top in B, or its target is on top in A
+
+void	move_top(t_stack **a, t_stack **b, t_stack *cheapest, \
+		void (*rot)(t_stack**, t_stack**))
+{
+	while (*a != cheapest->target && *b != cheapest)
+		rot(a, b);
+	set_cur_position(*a);
+	set_cur_position(*b);
+}
+
+void	move_nodes(t_stack **a, t_stack **b)
+{
+	t_stack	*cheapest_node;
+
+	cheapest_node = set_cheapest(*b);
+	if (cheapest_node->up_median && cheapest_node->target->up_median)
+		move_top(a, b, cheapest_node, rr);
+	else if (!cheapest_node->up_median && !cheapest_node->target->up_median)
+		move_top(a, b, cheapest_node, rrr);
+	finish_rot(b, cheapest_node, 'b');
+	finish_rot(a, cheapest_node->target, 'a');
+	push_to(b, a, 'a');
 }

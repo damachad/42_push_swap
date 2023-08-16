@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:23:33 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 10:59:40 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:43:56 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,15 @@ void	rev_rotate(t_stack **top)
 	*top = last;
 }
 
-void	push_to_b(t_stack **top_a, t_stack **top_b)
+void	push_to(t_stack **top_1, t_stack **top_2, char list)
 {
 	t_stack	*temp;
 
-	push_new_val(top_b, (*top_a)->val);
-	temp = (*top_a);
-	*top_a = (*top_a)->next;
+	push_new_val(top_2, (*top_1)->val);
+	temp = (*top_1);
+	*top_1 = (*top_1)->next;
 	free(temp);
-	ft_printf("pb\n");
-}
-
-void	push_to_a(t_stack **top_a, t_stack **top_b)
-{
-	t_stack	*temp;
-
-	push_new_val(top_a, (*top_b)->val);
-	temp = (*top_b);
-	*top_b = (*top_b)->next;
-	free(temp);
-	ft_printf("pa\n");
+	write(1, "p", 1);
+	write(1, &list, 1);
+	write(1, "\n", 1);
 }
