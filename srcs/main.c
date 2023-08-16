@@ -6,21 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 14:14:49 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:21:35 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	print_stack(t_stack *stack, char c)
-{
-	ft_printf("Stack %c:\n", c);
-	while (stack)
-	{
-		ft_printf("%d\n", stack->val);
-		stack = stack->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -41,3 +31,15 @@ int	main(int argc, char **argv)
 	free_stack(stack_a);
 	return (0);
 }
+
+/*
+void	print_stack(t_stack *stack, char c)
+{
+	ft_printf("Stack %c:\n", c);
+	while (stack)
+	{
+		ft_printf("%d\n", stack->val);
+		stack = stack->next;
+	}
+}
+*/

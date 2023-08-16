@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:52:55 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 16:11:03 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:20:02 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_stack	*smallest(t_stack *stack)
 	smallest = stack;
 	if (!stack)
 		return (NULL);
-	while (stack->next)
+	while (stack)
 	{
 		if (stack->val < smallest->val)
 			smallest = stack;
