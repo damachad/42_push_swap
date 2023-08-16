@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 16:10:05 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:10:34 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void		move_top(t_stack **a, t_stack **b, t_stack *cheapest, \
 void		finish_rot(t_stack **stack, t_stack *top, char list);
 
 /*----------------------------cost----------------------------*/
-void		set_cur_position(t_stack **stack);
-void		set_targets(t_stack **a, t_stack **b);
+void		set_cur_position(t_stack *stack);
+void		set_targets(t_stack *a, t_stack *b);
 void		set_cost(t_stack *a, t_stack *b);
 t_stack		*set_cheapest(t_stack *b);
 void		calculate_costs(t_stack **a, t_stack **b);

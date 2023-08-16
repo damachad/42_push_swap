@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:52:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 16:11:43 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:02:35 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	big_sort(t_stack **a, t_stack **b, size_t size)
 		calculate_costs(a, b);
 		move_nodes(a, b);
 	}
-	set_cur_position(a);
+	set_cur_position(*a);
 	first = smallest(*a);
 	if (first->up_median)
 	{
@@ -69,8 +69,8 @@ void	move_top(t_stack **a, t_stack **b, t_stack *cheapest, \
 {
 	while (*a != cheapest->target && *b != cheapest)
 		rot(a, b);
-	set_cur_position(a);
-	set_cur_position(b);
+	set_cur_position(*a);
+	set_cur_position(*b);
 }
 
 void	move_nodes(t_stack **a, t_stack **b)

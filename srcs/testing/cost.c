@@ -6,47 +6,45 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:55:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 16:15:38 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:11:54 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	set_cur_position(t_stack **stack)
+void	set_cur_position(t_stack *stack)
 {
-	t_stack			*tmp;
 	unsigned int	median;
 	unsigned int	i;
 
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_size(*stack) / 2;
-	tmp = *stack;
-	while (tmp)
+	median = stack_size(stack) / 2;
+	while (stack)
 	{
-		if (i < median)
-			tmp->up_median = true;
+		if (i <= median)
+			stack->up_median = true;
 		else
-			tmp->up_median = false;
-		tmp->cur_position = i++;
-		tmp = tmp->next;
+			stack->up_median = false;
+		stack->cur_position = i++;
+		stack = stack->next;
 	}
 }
 
-void	set_targets(t_stack **a, t_stack **b)
+void	set_targets(t_stack *a, t_stack *b)
 {
 	int		best_match;
 	t_stack	*target;
 	t_stack	*tmp_a;
 
-	while (*b)
+	while (b)
 	{
 		best_match = INT_MAX;
-		tmp_a = *a;
+		tmp_a = a;
 		while (tmp_a)
 		{
-			if (tmp_a->val > (*b)->val && tmp_a->val < best_match)
+			if (tmp_a->val > b->val && tmp_a->val < best_match)
 			{
 				best_match = tmp_a->val;
 				target = tmp_a;
@@ -54,10 +52,10 @@ void	set_targets(t_stack **a, t_stack **b)
 			tmp_a = tmp_a->next;
 		}
 		if (best_match == INT_MAX)
-			(*b)->target = smallest(*a);
+			b->target = smallest(a);
 		else
-			(*b)->target = target;
-		(*b) = (*b)->next;
+			b->target = target;
+		b = b->next;
 	}
 }
 
@@ -102,8 +100,8 @@ t_stack	*set_cheapest(t_stack *b)
 
 void	calculate_costs(t_stack **a, t_stack **b)
 {
-	set_cur_position(a);
-	set_cur_position(b);
-	set_targets(a, b);
+	set_cur_position(*a);
+	set_cur_position(*b);
+	set_targets(*a, *b);
 	set_cost(*a, *b);
 }
