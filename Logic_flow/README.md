@@ -7,10 +7,9 @@
 5. Create a function for each operation possible ✅
 6. Create list B ✅
 7. Create testing function to print lists ✅
-8. Create function to return size of list
-9. Measure cost of sorting each number
-10. Create different sorting functions, depending on the number of elements to sort
-11. Safety checks before doing operations to the lists
-12. Cover both input cases (single or multiple arguments)
+8. Create function to return size of list ✅
+9. Measure cost of sorting each number ✅
+10. Create different sorting functions, depending on the number of elements to sort ✅
+11. Cover both input cases (single or multiple arguments) ✅
 
 [Notion](https://www.notion.so/Push-swap-8008ab19b9884da1936fd38c9dcb4252)
