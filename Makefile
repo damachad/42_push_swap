@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/08/17 10:13:24 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/17 12:45:36 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,13 @@ SRC 		= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ ARGUMENTS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
-NBRS_LIST = 74 199 131 328 104 35 0
+NBRS_LIST = 1 6 3 -2 8
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ RULES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) -g $(OBJ) $(LFLAGS) -o $(NAME) -I $(INC)
+	@$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME) -I $(INC)
 	@echo "[$(GREEN)$(NAME) created$(RESET)]"
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c 
@@ -77,16 +77,17 @@ re: fclean all
 # valgrind --leak-check=full -s --show-leak-kinds=all --track-origins=yes
 
 test: $(NAME)
-	@./$(NAME) $(NBRS_LIST) | ./checker_linux $(NBRS_LIST)
+	@valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(NBRS_LIST) 
+
+# 5 numbers should be less than 12 operations
+# 100 numbers should be less than 700 operations to be perfect
+# 500 numbers should be less than 5500 operations to be perfect
 
 count: $(NAME)
+	@./$(NAME) $(NBRS_LIST) | ./checker_linux $(NBRS_LIST)
 	@./$(NAME) $(NBRS_LIST) | wc -l
 
 output: $(NAME)
-	@$(RM) output.txt
 	@./$(NAME) $(NBRS_LIST) > output.txt
 
-debug: re
-	@gdb --args $(NAME) $(NBRS_LIST)
-
-.PHONY: all clean fclean re test count
+.PHONY: all clean fclean re test count output
