@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:23:33 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 14:43:56 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:27:06 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Swaps the first 2 elements at the top of a stack
 
 void	swap(t_stack **top)
 {
@@ -21,6 +23,8 @@ void	swap(t_stack **top)
 	temp->next = (*top);
 	(*top) = temp;
 }
+
+// Shift up all elements of a stack by 1
 
 void	rotate(t_stack **top)
 {
@@ -34,6 +38,8 @@ void	rotate(t_stack **top)
 	last->next = temp;
 }
 
+// Shift down all elements of a stack by 1
+
 void	rev_rotate(t_stack **top)
 {
 	t_stack	*last;
@@ -45,6 +51,10 @@ void	rev_rotate(t_stack **top)
 	last->next = *top;
 	*top = last;
 }
+
+// Push first element of stack 1 to the top of stack 2
+// by creating a new node on stack 2 with the value of 
+// the node on top of stack 1 and freeing the latter
 
 void	push_to(t_stack **top_1, t_stack **top_2, char list)
 {

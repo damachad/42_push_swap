@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:35:58 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 15:39:45 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 10:50:13 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Initializes a new node with a given value
 
 t_stack	*new_node(int val)
 {
@@ -24,6 +26,8 @@ t_stack	*new_node(int val)
 	return (new_node);
 }
 
+// Adds a new node to the top of a list
+
 void	push_new_val(t_stack **top, int val)
 {
 	t_stack	*new_top;
@@ -32,6 +36,9 @@ void	push_new_val(t_stack **top, int val)
 	new_top->next = *top;
 	*top = new_top;
 }
+
+// Redirects the program to different functions, according to the
+// size of stack A
 
 void	push_swap(t_stack **stack_a, t_stack **stack_b, size_t size)
 {
@@ -44,6 +51,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, size_t size)
 	else
 		big_sort(stack_a, stack_b, size);
 }
+
+// Returns the node with the highest value
 
 t_stack	*highest(t_stack *stack)
 {

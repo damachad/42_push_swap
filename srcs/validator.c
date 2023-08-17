@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:31:04 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/15 11:00:34 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:21:19 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Converts a string to a long
 
 long	long_atoi(char *nptr)
 {
@@ -34,6 +36,8 @@ long	long_atoi(char *nptr)
 	return (sign * result);
 }
 
+// Checks if all numbers are within the limits for an integer
+
 bool	valid_range(char *str)
 {
 	int	digits;
@@ -49,6 +53,10 @@ bool	valid_range(char *str)
 		return (true);
 }
 
+// Evaluates if the numbers are on the right format
+// by checking if there is only one sign (+/-) and if 
+// there are only digits (besides the possible signs)
+
 bool	valid_format(char *str)
 {
 	int	i;
@@ -63,6 +71,8 @@ bool	valid_format(char *str)
 	}
 	return (true);
 }
+
+// Checks if there are duplicate numbers on the stack
 
 bool	exist_duplicates(t_stack *nbrs)
 {
@@ -83,6 +93,9 @@ bool	exist_duplicates(t_stack *nbrs)
 	}
 	return (false);
 }
+
+// Calling function to check if provided list
+// of numbers is valid for the program to run
 
 t_stack	*check_data(int size, char **nbrs)
 {

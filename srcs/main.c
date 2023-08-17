@@ -6,11 +6,16 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:15:06 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 10:20:08 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:24:42 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Creates pointers to stack A and B, evaluates if
+// number of arguments is valid and calls the
+// functions to sort stack A, freeing its memory
+// in the end of the program
 
 int	main(int argc, char **argv)
 {

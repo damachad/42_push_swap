@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:52:55 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 18:20:02 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:02:37 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Checks if given stack is sorted
 
 bool	is_sorted(t_stack *stack)
 {
@@ -23,6 +25,8 @@ bool	is_sorted(t_stack *stack)
 	return (true);
 }
 
+// Returns the last node of a linked list
+
 t_stack	*last_node(t_stack *top)
 {
 	while (top && top->next)
@@ -30,12 +34,16 @@ t_stack	*last_node(t_stack *top)
 	return (top);
 }
 
+// Returns the second last node of a linked list
+
 t_stack	*second_last_node(t_stack *top)
 {
 	while (top && top->next && top->next->next)
 		top = top->next;
 	return (top);
 }
+
+// Returns how many nodes are present on a linked list
 
 size_t	stack_size(t_stack *top)
 {
@@ -52,7 +60,9 @@ size_t	stack_size(t_stack *top)
 	return (size);
 }
 
-t_stack	*smallest(t_stack *stack)
+// Returns the node with the lowest value
+
+t_stack	*lowest(t_stack *stack)
 {
 	t_stack	*smallest;
 

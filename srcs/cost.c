@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 13:55:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 14:57:49 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:10:20 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	set_cur_position(t_stack *stack)
 	}
 }
 
+// Sets target flag on each node of stack B, according to
+// which element of stack A should be on top when the
+// push to A operation occurs for each stack B node
+
 void	set_targets(t_stack *a, t_stack *b)
 {
 	int		best_match;
@@ -55,12 +59,15 @@ void	set_targets(t_stack *a, t_stack *b)
 			curr_a = curr_a->next;
 		}
 		if (best_match == INT_MAX)
-			b->target = smallest(a);
+			b->target = lowest(a);
 		else
 			b->target = target;
 		b = b->next;
 	}
 }
+
+// Calculates the cost of moving cheapest/target node
+// to the top of its stack
 
 void	set_cost(t_stack *a, t_stack *b)
 {
@@ -82,6 +89,9 @@ void	set_cost(t_stack *a, t_stack *b)
 	}
 }
 
+// Sets the cheapest flag on the node with the lowest cost
+// and returns that node
+
 t_stack	*set_cheapest(t_stack *b)
 {
 	unsigned int	cheapest_move;
@@ -100,6 +110,8 @@ t_stack	*set_cheapest(t_stack *b)
 	cheapest_node->cheapest = true;
 	return (cheapest_node);
 }
+
+// Calling function to calculate costs of moving nodes
 
 void	calculate_costs(t_stack *a, t_stack *b)
 {

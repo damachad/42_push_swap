@@ -6,11 +6,14 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 11:35:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 10:20:16 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:15:29 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Calls function to free the stack and writes 
+// "Error\n" on the standard error
 
 void	error(t_stack *stack)
 {
@@ -18,6 +21,8 @@ void	error(t_stack *stack)
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
+
+// Frees the given stack's memory
 
 void	free_stack(t_stack *stack)
 {
@@ -34,6 +39,9 @@ void	free_stack(t_stack *stack)
 }
 
 /*
+
+// Prints given stack
+
 void	print_stack(t_stack *stack, char c)
 {
 	ft_printf("Stack %c:\n", c);

@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:52:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/16 18:20:39 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:01:00 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// Sorts a stack of 3 elements (lowest to highest)
 
 void	sort_3(t_stack **stack_a)
 {
@@ -25,6 +27,8 @@ void	sort_3(t_stack **stack_a)
 		do_op(swap, stack_a, 'a');
 }
 
+// Algorithm to sort stack A (lowest to highest)
+
 void	big_sort(t_stack **a, t_stack **b, size_t size)
 {
 	t_stack	*first;
@@ -38,7 +42,7 @@ void	big_sort(t_stack **a, t_stack **b, size_t size)
 		move_nodes(a, b);
 	}
 	set_cur_position(*a);
-	first = smallest(*a);
+	first = lowest(*a);
 	if (first->up_median)
 	{
 		while (*a != first)
@@ -51,7 +55,8 @@ void	big_sort(t_stack **a, t_stack **b, size_t size)
 	}
 }
 
-// Finishes rotating so that cheapest/target is on top of stack
+// Finishes rotating so that the cheapest/target is on top of
+// the corresponding stack
 
 void	finish_rot(t_stack **stack, t_stack *top, char list)
 {
@@ -75,6 +80,9 @@ void	move_top(t_stack **a, t_stack **b, t_stack *cheapest, \
 	set_cur_position(*a);
 	set_cur_position(*b);
 }
+
+// Operates on each stack so as to sort stack A, moving the nodes 
+// according to the associated costs, previously calculated
 
 void	move_nodes(t_stack **a, t_stack **b)
 {
