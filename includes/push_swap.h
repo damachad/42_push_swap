@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 12:32:26 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:52:41 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ t_stack		*lowest(t_stack *stack);
 /*---------------------------clean---------------------------*/
 void		error(t_stack *stack);
 void		free_stack(t_stack *top);
-void		free_split_result(char **words);
 //void		print_stack(t_stack *stack, char c);
 
 #endif
