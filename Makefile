@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/08/17 12:45:36 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/17 15:01:27 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRC 		= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ ARGUMENTS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
-NBRS_LIST = 1 6 3 -2 8
+NBRS_LIST = 0 2 4 6 7 8 9
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ RULES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 all: $(NAME)
@@ -79,6 +79,7 @@ re: fclean all
 test: $(NAME)
 	@valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(NBRS_LIST) 
 
+# 3 numbers should be less than 3 operations
 # 5 numbers should be less than 12 operations
 # 100 numbers should be less than 700 operations to be perfect
 # 500 numbers should be less than 5500 operations to be perfect
