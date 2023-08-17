@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:35:58 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 10:50:13 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:32:10 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ void	push_new_val(t_stack **top, int val)
 // Redirects the program to different functions, according to the
 // size of stack A
 
-void	push_swap(t_stack **stack_a, t_stack **stack_b, size_t size)
+void	push_swap(t_stack **stack_a, t_stack **stack_b)
 {
+	size_t	size;
+
+	size = stack_size(*stack_a);
 	if (size < 2 || !stack_a)
 		return ;
 	else if (size == 2)

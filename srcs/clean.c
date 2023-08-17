@@ -6,11 +6,23 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 11:35:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 11:15:29 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:30:06 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	free_split_result(char **words)
+{
+	int	i;
+
+	i = -1;
+	if (!words)
+		return ;
+	while (words[++i])
+		free(words[i]);
+	free(words);
+}
 
 // Calls function to free the stack and writes 
 // "Error\n" on the standard error
