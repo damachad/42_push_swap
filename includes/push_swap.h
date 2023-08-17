@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 10:16:42 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 10:22:09 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:32:26 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long		long_atoi(char *nptr);
 /*---------------------------init---------------------------*/
 t_stack		*new_node(int val);
 void		push_new_val(t_stack **top, int val);
-void		push_swap(t_stack **stack_a, t_stack **stack_b, size_t size);
+void		push_swap(t_stack **stack_a, t_stack **stack_b);
 t_stack		*highest(t_stack *stack);
 
 /*------------------------operations------------------------*/
@@ -74,11 +74,12 @@ bool		is_sorted(t_stack *stack);
 t_stack		*last_node(t_stack *top);
 t_stack		*second_last_node(t_stack *top);
 size_t		stack_size(t_stack *top);
-t_stack		*smallest(t_stack *stack);
+t_stack		*lowest(t_stack *stack);
 
 /*---------------------------clean---------------------------*/
 void		error(t_stack *stack);
 void		free_stack(t_stack *top);
+void		free_split_result(char **words);
 //void		print_stack(t_stack *stack, char c);
 
 #endif
