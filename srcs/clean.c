@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 11:35:59 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/10 15:38:08 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 10:20:16 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,15 @@ void	free_stack(t_stack *stack)
 		free(temp);
 	}
 }
+
+/*
+void	print_stack(t_stack *stack, char c)
+{
+	ft_printf("Stack %c:\n", c);
+	while (stack)
+	{
+		ft_printf("%d\n", stack->val);
+		stack = stack->next;
+	}
+}
+*/
