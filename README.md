@@ -21,3 +21,5 @@ The last element becomes the first one.
 - rrb (reverse rotate b): Shift down all elements of stack b by 1.
 The last element becomes the first one.
 - rrr : rra and rrb at the same time.
+
+As an additional goal, the number of operations used to sort the stack should be the lowest possible.
