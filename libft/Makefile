@@ -6,9 +6,20 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/08/08 12:38:58 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/17 12:09:32 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ COLORS /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
+RESET	= \033[0m
+BLACK 	= \033[1;30m
+RED 	= \033[1;31m
+GREEN 	= \033[1;32m
+YELLOW 	= \033[1;33m
+BLUE	= \033[1;34m
+PURPLE 	= \033[1;35m
+CYAN 	= \033[1;36m
+WHITE 	= \033[1;37m
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ COMMANDS /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 CC = cc
@@ -32,7 +43,7 @@ SRC_LIBFT = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isasci
       ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
       ft_strmapi.c ft_split.c  ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 	  ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstiter.c ft_lstclear.c \
-	  ft_lstmap.c count_words2.c
+	  ft_lstmap.c ft_count_words.c
 
 SRC_PRINTF = ft_convert.c ft_printf.c ft_put_add.c \
 			ft_putchar_2.c ft_putnbr_hex.c ft_putnbr_rec.c \
@@ -49,22 +60,22 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
-	@echo "libft.a created"
+	@echo "[$(GREEN)libft.a created$(RESET)]"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@echo "libft objs directory created"
+	@echo "[$(GREEN)libft objs directory created$(RESET)]"
 
 $(OBJ_DIR)/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I libft.h
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "libft objs removed"
+	@echo "[$(RED)libft objs removed$(RESET)]"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "libft.a removed"
+	@echo "[$(RED)libft.a removed$(RESET)]"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:06:37 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/08 12:38:54 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:21:59 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 /*---------------------GNL----------------------------*/
 # ifndef BUFFER_SIZE
@@ -28,7 +29,6 @@ char	*ft_get_line(char *text);
 char	*ft_strjoin_2(char *s1, char *s2);
 char	*read_from(int fd, char *read_text);
 /*---------------------FT_PRINTF----------------------------*/
-# include <stdarg.h>
 
 int		ft_putchar_2(char c);
 int		ft_putstr_2(char *s);
@@ -90,7 +90,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-int		count_words2(char *str);
+int		ft_count_words(char *str);
 
 #endif
