@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/08/16 18:32:57 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/17 10:13:24 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,13 +79,14 @@ re: fclean all
 test: $(NAME)
 	@./$(NAME) $(NBRS_LIST) | ./checker_linux $(NBRS_LIST)
 
-op: $(NAME)
+count: $(NAME)
 	@./$(NAME) $(NBRS_LIST) | wc -l
 
 output: $(NAME)
+	@$(RM) output.txt
 	@./$(NAME) $(NBRS_LIST) > output.txt
 
 debug: re
 	@gdb --args $(NAME) $(NBRS_LIST)
 
-.PHONY: all clean fclean re test op
+.PHONY: all clean fclean re test count
