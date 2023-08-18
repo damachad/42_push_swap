@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:31:04 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/17 14:51:43 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/18 14:02:50 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ bool	valid_format(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		return (false);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i++]))
